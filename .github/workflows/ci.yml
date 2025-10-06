@@ -31,16 +31,14 @@ jobs:
         run: |
           python manage.py test -v2 --keepdb
 
-      - name: Archive project for deploy
-        run: |
-          mkdir -p release
-          tar -czf release/django_app.tar.gz
+      - name: Prepare release artifact
+        run: tar -czf release.tar.gz core sample_project .env.example db.sqlite3 manage.py requirements.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: release
-          path: ./release/django_app.tar.gz
+          path: release.tar.gz
 
   deploy:
     runs-on: self-hosted
