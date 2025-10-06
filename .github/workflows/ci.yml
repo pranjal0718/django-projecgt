@@ -63,7 +63,7 @@ jobs:
           scp ./artifact/release.tar.gz ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/tmp/release.tar.gz
           ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             mkdir -p ~/deploy/releases
-            tar -xzf tmp/release.tar.gz -C ~/deploy/releases
+            tar -xzf /tmp/release.tar.gz -C ~/deploy/releases
             rm /tmp/release.tar.gz
             cd ~/deploy/releases
             python3 manage.py runserver
