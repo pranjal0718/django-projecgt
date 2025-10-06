@@ -60,10 +60,10 @@ jobs:
 
       - name: Upload artifact to server and deploy
         run: |
-          scp ./artifact/django_app.tar.gz ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/tmp/django_app.tar.gz
+          scp ./artifact/release.tar.gz ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/tmp/release.tar.gz
           ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             mkdir -p ~/deploy/releases
-            mv /tmp/django_app.tar.gz ~/deploy/releases
+            mv /tmp/release.tar.gz ~/deploy/releases
             cd ~/deploy/releases
             python manage.py runserver
           EOF
