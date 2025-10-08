@@ -1,3 +1,4 @@
 Django>=4.2,<5.0
 python-dotenv>=1.0.0
 psycopg2-binary>=2.9.6  # optional, if using Postgres
+gunicorn>=21.2.0
